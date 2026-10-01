@@ -149,6 +149,13 @@ kubectl get services
 - Accessed the deployed application using Minikube.
 - Created a declarative Kubernetes YAML manifest.
 
+## Application Output
+
+The Nginx application was successfully deployed on Kubernetes and accessed through the NodePort Service.
+
+![Nginx Welcome Page](./image/Nginx-image.png)
+
+
 ## Conclusion
 
 Successfully deployed and accessed an Nginx web application using Kubernetes and Minikube.
