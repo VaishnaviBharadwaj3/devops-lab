@@ -160,4 +160,3 @@ The Nginx application was successfully deployed on Kubernetes and accessed throu
 
 Successfully deployed and accessed an Nginx web application using Kubernetes and Minikube.
 
-**Status: Completed ✅**
