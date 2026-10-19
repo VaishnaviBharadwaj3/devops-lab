@@ -1,0 +1,49 @@
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                echo 'Starting delivery monitoring pipeline'
+            }
+        }
+
+        stage('Validate Project Files') {
+            steps {
+                dir('/workspace/Exercise-6') {
+                    sh 'pwd'
+                    sh 'ls -la'
+                    sh 'docker --version'
+                    sh 'python3 --version'
+                }
+            }
+        }
+
+        stage('Validate Python Syntax') {
+            steps {
+                dir('/workspace/Exercise-6') {
+                    sh 'python3 -m py_compile delivery_metrics.py'
+                }
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                dir('/workspace/Exercise-6') {
+                    sh 'docker build -t delivery-monitoring:latest .'
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Delivery monitoring pipeline completed successfully!'
+        }
+
+        failure {
+            echo 'Pipeline failed. Check the stage logs for details.'
+        }
+    }
+}
